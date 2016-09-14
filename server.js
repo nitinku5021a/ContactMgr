@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 /* for local db connection ***/
 //var db = mongojs('contactList', ['contactList']);
 
-var db = mongojs('demo:demo@ds021166.mlab.com:21166/mean-demo', ['contactList']);
+var db = mongojs(process.env.PROD_MONGODB, ['contactList']);
 
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
