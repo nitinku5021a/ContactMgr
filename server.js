@@ -3,7 +3,11 @@ var app = express();
 var mongojs = require('mongojs');
 var bodyParser = require('body-parser');
 
-var db = mongojs('contactList', ['contactList']);
+/* for local db connection ***/
+//var db = mongojs('contactList', ['contactList']);
+
+var db = mongojs('demo:demo@ds021166.mlab.com:21166/mean-demo', ['contactList']);
+
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
