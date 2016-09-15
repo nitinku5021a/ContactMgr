@@ -4,9 +4,9 @@ var mongojs = require('mongojs');
 var bodyParser = require('body-parser');
 
 /* for local db connection ***/
-//var db = mongojs('contactList', ['contactList']);
+var db = mongojs('contactList', ['contactList']);
 
-var db = mongojs(process.env.PROD_MONGODB, ['contactList']);
+//var db = mongojs(process.env.PROD_MONGODB, ['contactList']);
 
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
@@ -55,7 +55,7 @@ app.put('/contactList/:id', function(req, res){
 
     });
 
-var port = process.env.PORT || 8080 ;
+var port = process.env.PORT || 3000 ;
 app.listen(port);
 
 console.log("Server is running");

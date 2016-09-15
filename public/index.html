@@ -1,47 +1,55 @@
 <!DOCTYPE>
 <html ng-app ="ContactMgr">
     <header>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title> Contact List Manager </title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
         <script src="/Controller/controller.js"></script>
     </header>
-    <body>
-          
-          <div class="container">
-              <div ng-controller="contactController">
-                    <h1> Contact List Manager </h1>
-                    <div class="table-responsive">
-                        <table class="table">
-                           <thead>
-                            <tr>
-                                <th> Name </th>
-                                <th> Mobile No.</th>
-                                <th> Add/Del </th>
-                                <th> Edit </th>
-                            </tr> 
-                            </thead>
-                           <tbody>
-                               <tr>
-                                   <td><input class="form-control" ng-model="contact.Name"></td>
-                                   <td><input class="form-control" ng-model="contact.Mobile"></td>
-                                   <td><button class="btn btn-success" ng-click="addContact()">Add</button></td>
-                                   <td><button class="btn btn-warning" ng-click="updateContact()">Update</button></td>
-                               </tr>
-                                <tr ng-repeat="name in contactList">
-                                    <td>{{name.Name}}</td>
-                                    <td>{{name.Mobile}}</td>
-                                    <td><button class="btn btn-danger" ng-click="removeContact(name._id)">Delete</button></td>
-                                    <td><button class="btn btn-primary" ng-click="editContact(name._id)">Edit</button></td>
-                                </tr>
-                           </tbody>
-                        </table>
+    <body> 
+        <div class="container">
+            <div ng-controller="contactController">
+                <div class="jumbotron">
+                    <h1 class="display-3"> Contact List Manager </h1>
+                </div>
+
+                    <div class = "card card-block">
+                       <div class="row">
+                               <div class="col-md-3"> <h4 class="card-text"> Name </h4></div>
+                               <div class="col-md-9"> <input class="form-control" ng-model="contact.Name"> </div>
+                       </div>  
+                       <br>
+                       <div class="row">   
+                               <div class="col-md-3"> <h4 class="card-text"> Mobile </h4> </div>
+                               <div class="col-md-9"> <input class="form-control" ng-model="contact.Mobile"> </div>
+                       </div>
+                       <br>
+                            <div class="row" align="center">
+                                
+                                <button class="btn btn-success" ng-click="addContact()">Add</button>
+                                <button class="btn btn-warning" ng-click="updateContact()">Update</button>
+                            </div>
+                       </table>
                     </div>
 
-              </div>
+                    <div class="col-sm-6" ng-repeat="name in contactList">
+                        <div class="container-fluid">        
+                            <div class="card card-block ">
+                                <h3 class="card-title">{{name.Name | uppercase}}</h3>
+                                <p class="card-text">{{name.Mobile}}</p>
+                                <button class="btn btn-danger" ng-click="removeContact(name._id)">Delete</button>
+                                <button class="btn btn-primary" ng-click="editContact(name._id)">Edit</button>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    
 
-          </div>
-            
-           
-    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+</body>
 </html>  
