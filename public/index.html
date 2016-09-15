@@ -10,27 +10,27 @@
           <div class="container">
               <div ng-controller="contactController">
                   <h1> Contact List Manager </h1>
-                  <form class="form-inline">
+                  <form class="form-inline" name="contactForm">
                       <div class="form-group">
-                          <input class="form-control" ng-model="contact.Name" placeholder="Enter Name" required>
-                          <input class="form-control" ng-model="contact.Mobile" placeholder="Enter Mobile Number" required>
-                          <input class="form-control" ng-model="contact.Email" placeholder="Enter email" required>
+                          <input class="form-control" ng-model="contact.Name" placeholder="Name" name="Name" required>
+                          <input class="form-control" ng-model="contact.Mobile" placeholder="Mobile" name="Mobile" ng-pattern="/^\d{10}$/" required>
+                          <input class="form-control" ng-model="contact.Email" placeholder="Email" name="Email" type="email" required>
                           <br><br>
-                          <button class="btn btn-success" ng-click="addContact()">Add</button>
-                          <button class="btn btn-warning" ng-click="updateContact()">Update</button>
+                          <button class="btn btn-success" ng-click="addContact()" ng-hide="edit" ng-disabled="contactForm.Name.$invalid || contactForm.Mobile.$invalid || contactForm.Email.$invalid">Add</button>
+                          <button class="btn btn-warning" ng-click="updateContact()" ng-show="edit" ng-disabled="contactForm.Name.$invalid || contactForm.Mobile.$invalid || contactForm.Email.$invalid">Update</button>
                           <br><br>
-                      </div>
-                      <div class="list-group">
-                        <div class="list-group-item" ng-repeat="name in contactList">
-                            <img src="img\user.jpg" style="width:128px;height:128px;"/>
-                            <h2><em>{{name.Name}}</em></h2>
-                            <h3><em class="pull-right">{{name.Mobile}}</em></h3><br>
-                            <h3><em class="pull-right">{{name.Email}}</em></h3><br>
-                            <button class="btn btn-danger" ng-click="removeContact(name._id)">Delete</button>
-                            <button class="btn btn-primary" ng-click="editContact(name._id)">Edit</button>
-                        </div>
                       </div>
                   </form>
+                      <div class="list-group">
+                        <div class="list-group-item" ng-repeat="contact in contactList">
+                            <img src="img\user.jpg" style="width:64px;height:64px;"/>
+                            <em class="pull-right" ><h3>{{contact.Name}}</h3></em><br>
+                            <em class="pull-right">{{contact.Mobile}}</em><br>
+                            <em class="pull-right">{{contact.Email}}</em><br>
+                            <button class="btn btn-danger" ng-click="removeContact(contact._id)" ng->Delete</button>
+                            <button class="btn btn-primary" ng-click="editContact(contact._id)">Edit</button>
+                        </div>
+                      </div>
               </div>
         </div>
     </body>

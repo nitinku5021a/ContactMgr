@@ -9,6 +9,8 @@ var refresh = function(){
 };
 refresh();
 
+$scope.edit = false;
+
 $scope.addContact = function(){
 console.log($scope.contact);
     $http.post('/contactList', $scope.contact).success(function(response){
@@ -27,6 +29,7 @@ $scope.removeContact = function(id){
 };
 
 $scope.editContact = function(id){
+    $scope.edit = true;
     $http.get('/contactList/' + id).success(function(response){
         $scope.contact = response;
     });
