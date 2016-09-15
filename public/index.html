@@ -7,41 +7,31 @@
         <script src="/Controller/controller.js"></script>
     </header>
     <body>
-          
           <div class="container">
               <div ng-controller="contactController">
-                    <h1> Contact List Manager </h1>
-                    <div class="table-responsive">
-                        <table class="table">
-                           <thead>
-                            <tr>
-                                <th> Name </th>
-                                <th> Mobile No.</th>
-                                <th> Add/Del </th>
-                                <th> Edit </th>
-                            </tr> 
-                            </thead>
-                           <tbody>
-                               <tr>
-                                   <td><input class="form-control" ng-model="contact.Name"></td>
-                                   <td><input class="form-control" ng-model="contact.Mobile"></td>
-                                   <td><button class="btn btn-success" ng-click="addContact()">Add</button></td>
-                                   <td><button class="btn btn-warning" ng-click="updateContact()">Update</button></td>
-                               </tr>
-                                <tr ng-repeat="name in contactList">
-                                    <td>{{name.Name}}</td>
-                                    <td>{{name.Mobile}}</td>
-                                    <td><button class="btn btn-danger" ng-click="removeContact(name._id)">Delete</button></td>
-                                    <td><button class="btn btn-primary" ng-click="editContact(name._id)">Edit</button></td>
-                                </tr>
-                           </tbody>
-                        </table>
-                    </div>
-
+                  <h1> Contact List Manager </h1>
+                  <form class="form-inline">
+                      <div class="form-group">
+                          <input class="form-control" ng-model="contact.Name" placeholder="Enter Name" required>
+                          <input class="form-control" ng-model="contact.Mobile" placeholder="Enter Mobile Number" required>
+                          <input class="form-control" ng-model="contact.Email" placeholder="Enter email" required>
+                          <br><br>
+                          <button class="btn btn-success" ng-click="addContact()">Add</button>
+                          <button class="btn btn-warning" ng-click="updateContact()">Update</button>
+                          <br><br>
+                      </div>
+                      <div class="list-group">
+                        <div class="list-group-item" ng-repeat="name in contactList">
+                            <img src="img\user.jpg" style="width:128px;height:128px;"/>
+                            <h2><em>{{name.Name}}</em></h2>
+                            <h3><em class="pull-right">{{name.Mobile}}</em></h3><br>
+                            <h3><em class="pull-right">{{name.Email}}</em></h3><br>
+                            <button class="btn btn-danger" ng-click="removeContact(name._id)">Delete</button>
+                            <button class="btn btn-primary" ng-click="editContact(name._id)">Edit</button>
+                        </div>
+                      </div>
+                  </form>
               </div>
-
-          </div>
-            
-           
+        </div>
     </body>
 </html>  

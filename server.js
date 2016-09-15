@@ -49,7 +49,7 @@ app.get('/contactList/:id', function(req, res){
 app.put('/contactList/:id', function(req, res){
     var id = req.params.id;
     db.contactList.findAndModify({ query: {_id: mongojs.ObjectId(id)}, 
-        update: {$set: {Name: req.body.Name, Mobile: req.body.Mobile}}, new: true}, function(err, docs){
+        update: {$set: {Name: req.body.Name, Mobile: req.body.Mobile, Email: req.body.Email}}, new: true}, function(err, docs){
             res.json(docs);
         });
 
